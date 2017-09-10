@@ -4,19 +4,22 @@
     <title>Hello, WebVR! - A-Frame</title>
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
 <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
   </head>
 <body>
   <a-scene>
     <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
-                event-set__enter="_event: mouseenter; _target: a-box #boxColor; color: #f3f3f3"
-                event-set__leave="_event: mouseleave; _target: a-box #boxColor; color: #fff">
+                event-set__enter="_event: mouseenter; _target: #skyColor; color: blue"
+                event-set__leave="_event: mouseleave; _target: #skyColor; color: red">
     </a-cylinder>
     <a-box color="#4CC3D9" position="3 1.5 -3" rotation="0 90 40">
-         <a-box id="boxColor" color="#000" position="-3 2 -5" rotation="0 90 45" scale="2 0.25 0.5">
+         <a-box id="boxColor" color="red" position="3 1.7 -3" rotation="0 90 45" scale="2 0.25 0.5">
             <a-animation attribute="rotation" to="0 90 405" delay="500" direction="" repeat="indefinite" dur="1000"></a-animation>            
         </a-box>         
     </a-box>
+    <a-sky id="skyColor" color="blue"></a-sky>
     <a-camera>
       <a-cursor></a-cursor>
     </a-camera>
