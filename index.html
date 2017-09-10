@@ -11,13 +11,28 @@
 <body>
   <a-scene>
     
-    <a-box position="-5 2 -5" rotation="0 90 30" color="#FFC65D"
+    <a-box position="-5 1 -5" rotation="0 90 30" scale="0.75 0.75 0.75" color="#FFC65D"
                 event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
                 event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
     </a-box>
-    <a-box color="#4CC3D9" position="1 2 -5" rotation="0 90 40"></a-box>  
+    <a-box position="-3 3 -5" rotation="0 90 30" scale="0.75 0.75 0.75" color="#FFC65D"
+                event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
+                event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
+    </a-box>
+    <a-box position="-1 2 -5" rotation="0 45 45" scale="0.75 0.75 0.75" color="#FFC65D"
+                event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
+                event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
+    </a-box>
+    <a-box position="2 2 -4" rotation="0 90 30" scale="0.75 0.75 0.75" color="#FFC65D"
+                event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
+                event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
+    </a-box>
+    <a-box position="1 2 -5" rotation="0 90 30" scale="0.75 0.75 0.75" color="#FFC65D"
+                event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
+                event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
+    </a-box>  
     
-    <a-entity id="env" environment="preset: threetowers; lighting: distant; lightPosition: 0 1 -0.2; skyType: gradient; skyColor: blue"></a-entity>  
+    <a-entity id="env" environment="preset: threetowers; lighting: distant; skyType: gradient; skyColor: blue"></a-entity>  
     
     <a-camera>
       <a-cursor></a-cursor>
