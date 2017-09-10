@@ -10,21 +10,19 @@
   </head>
 <body>
   <a-scene>
-    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
+    
+    <a-box position="-5 2 -5" rotation="0 90 30" color="#FFC65D"
                 event-set__enter="_event: mouseenter; _target:#env; environment.preset: tron"
                 event-set__leave="_event: mouseleave; _target:#env; environment.preset: forest">
-    </a-cylinder>
-    <a-box color="#4CC3D9" position="3 1.5 -3" rotation="0 90 40">
-         <a-box id="boxColor" color="red" position="3 1.7 -3" rotation="0 90 45" scale="2 0.25 0.5">
-            <a-animation attribute="rotation" to="0 90 405" delay="500" direction="" repeat="indefinite" dur="1000"></a-animation>            
-        </a-box>         
     </a-box>
+    <a-box color="#4CC3D9" position="1 2 -5" rotation="0 90 40"></a-box>  
     
-            <a-entity id="env" environment="preset: threetowers; lighting: distant; lightPosition: 0 1 -0.2; skyType: gradient; skyColor: blue"></a-entity>      
-
+    <a-entity id="env" environment="preset: threetowers; lighting: distant; lightPosition: 0 1 -0.2; skyType: gradient; skyColor: blue"></a-entity>  
+    
     <a-camera>
       <a-cursor></a-cursor>
     </a-camera>
+    
   </a-scene>
 </body>
 </html>
