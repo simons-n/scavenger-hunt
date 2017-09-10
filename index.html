@@ -9,11 +9,13 @@
 <body>
   <a-scene>
     <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
-                event-set__enter="_event: mouseenter; _target: #boxColor; attribute=rotation"
-                event-set__leave="_event: mouseleave; _target: #boxColor; attribute=">
+                event-set__enter="_event: mouseenter; _target: a-box #boxColor; color: #f3f3f3"
+                event-set__leave="_event: mouseleave; _target: a-box #boxColor; color: #fff">
     </a-cylinder>
     <a-box color="#4CC3D9" position="3 1.5 -3" rotation="0 90 40">
-      <a-animation id="boxColor" attribute="rotation" to="0 90 400" delay="1000" direction="" repeat="indefinite" dur="1000"></a-animation>            
+         <a-box id="boxColor" color="#000" position="-3 2 -5" rotation="0 90 45" scale="2 0.25 0.5">
+            <a-animation attribute="rotation" to="0 90 405" delay="500" direction="" repeat="indefinite" dur="1000"></a-animation>            
+        </a-box>         
     </a-box>
     <a-camera>
       <a-cursor></a-cursor>
