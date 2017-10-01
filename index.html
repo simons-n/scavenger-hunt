@@ -4,7 +4,6 @@
     <title>Interactions - A-Frame</title>
     <meta name="description" content="Interactions - A-Frame">
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
   </head>
 <body>
@@ -18,22 +17,22 @@
     
     <a-box position="-3 1 -5" rotation="0 90 30" scale="" color="#F44336"
                 event-set__enter="_event: mouseenter; _target:#env; color: #F44336"
-                event-set__leave="_event: mouseleave; _target:#env; color: #fff">
+                event-set__leave="_event: mouseleave; _target:#env; color: ">
     </a-box>
     <a-box position="-1 2 -5" rotation="0 45 45" scale="0.75 0.75 0.75" color="#2196F3"
                 event-set__enter="_event: mouseenter; _target:#env; color: #2196F3"
-                event-set__leave="_event: mouseleave; _target:#env; color: #fff">
+                event-set__leave="_event: mouseleave; _target:#env; color:">
     </a-box>
     <a-box position="2 2 -4" rotation="0 45 30" scale="0.75 0.75 0.75" color="#009688"
                 event-set__enter="_event: mouseenter; _target:#env; color: #009688"
-                event-set__leave="_event: mouseleave; _target:#env; color: #fff">            
+                >            
     </a-box>
     <a-box position="1 1 -5" rotation="0 70 30" scale="0.9 0.9 0.9" color="#E91E63"
                 event-set__enter="_event: mouseenter; _target:#env; color: #E91E63"
                 event-set__leave="_event: mouseleave; _target:#env; color: #fff">
     </a-box>  
     
-    <a-sky id="env" color="#6EBAA7"></a-sky>
+    <a-sky id="env" color="#fff"></a-sky>
     
     <a-plane src="#groundTexture" rotation="-90 0 0" width="50" height="50"></a-plane>
     
