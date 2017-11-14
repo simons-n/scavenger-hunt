@@ -9,19 +9,19 @@
   </head>
   <body>
     <a-scene>
-      <rw-room position="-2 0 -2" material="color:#510766">
-			<rw-wall position="4 0 0"></rw-wall>
-			<rw-wall position="4 0 4"></rw-wall>
-			<rw-wall position="0 0 4"></rw-wall>
+      <rw-room position="-4 0 -4" material="color:#510766">
+			<rw-wall position="8 0 0"></rw-wall>
+			<rw-wall position="8 0 8"></rw-wall>
+			<rw-wall position="0 0 8"></rw-wall>
 			<rw-wall position="0 0 0">
 		  		<rw-doorhole id="holeA"></rw-doorhole>
 		  		<rw-doorlink from="#holeA" to="#holeB" position="2.5 0 0"></rw-doorlink>
 			</rw-wall>
-      <rw-ceiling position="0 0 0"></rw-ceiling>
+      <rw-ceiling position="0 0 0" material="color:##7c2803"></rw-ceiling>
 
 		</rw-room>
-		<rw-room position="0 0 -3">
-			<rw-wall position=" 1 0 -1" material="color:#787"></rw-wall>
+		<rw-room position="0 0 -5">
+			<rw-wall position=" 1 0 0" material="color:#787"></rw-wall>
 			<rw-wall position=" 1 0  1" material="color:#877">
 				<rw-doorhole id="holeB"></rw-doorhole>
 			</rw-wall>
