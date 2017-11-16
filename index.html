@@ -6,13 +6,49 @@
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+    <script src="../../../dist/aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@3.2.5/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-randomizer-components@3.0.2/dist/aframe-randomizer-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-entity-generator-component@3.0.1/dist/aframe-entity-generator-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('random-material', {
+        init: function () {
+          this.el.setAttribute('material', {
+            color: this.getRandomColor(),
+            metalness: Math.random(),
+            roughness: Math.random()
+          });
+        },
+        getRandomColor: function () {
+          var letters = '0123456789ABCDEF'.split('');
+          var color = '#';
+          for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        }
+      });
+      AFRAME.registerComponent('random-torus-knot', {
+        init: function () {
+          this.el.setAttribute('geometry', {
+            primitive: 'torusKnot',
+            radius: Math.random() * 10,
+            radiusTubular: Math.random() * .75,
+            p: Math.round(Math.random() * 10),
+            q: Math.round(Math.random() * 10)
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <a-scene>
       <rw-room position="-4 0 -4" material="color:#510766" height="4">
-			<rw-wall position="8 0 0"></rw-wall>
+			<rw-wall src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" position="8 0 0"></rw-wall>
 			<rw-wall position="8 0 8"></rw-wall>
 			<rw-wall position="0 0 8"></rw-wall>
+              <a-box position="1.4 1.2 5.2" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+
 			<rw-wall position="0 0 0">
 		  		<!--<rw-doorhole id="holeA"></rw-doorhole>
           <!--<a-entity light="color: #AFA; intensity: 7.5" position="3.499 .7 2"></a-entity>
@@ -21,7 +57,9 @@
 			</rw-wall>
       <rw-ceiling position="0 0 0" material="color:##7c2803"></rw-ceiling>
       <rw-floor position ="0 0 0" material="color:##7c2803"></rw-floor>
+      <a-entity entity-generator="mixin: torusKnot; num: 120"></a-entity>
 		</rw-room>
+      
 		<rw-room position="0 0 -5">
 			<rw-wall position=" 1 0 0" material="color:#787"></rw-wall>
 			<rw-wall position=" 1 0  1" material="color:#877">
