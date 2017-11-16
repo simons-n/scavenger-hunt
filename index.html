@@ -28,7 +28,7 @@
           return color;
         }
       });
-      AFRAME.registerComponent('random-torus-knot', {
+      AFRAME.registerComponent('random-dodecahedron', {
         init: function () {
           this.el.setAttribute('geometry', {
             primitive: 'dodecahedron',
@@ -41,10 +41,10 @@
   <body>
     <a-scene>
       <a-assets>
-        <a-mixin id="torusKnot"
-                 random-torus-knot
+        <a-mixin id="dodecahedron"
+                 random-dodecahedron
                  random-material
-                 random-position="min: 0 0 0 ; max: 8 8"></a-mixin>
+                 random-position="min: -4 0 -4 ; max: 4 4 4"></a-mixin>
       </a-assets>
       
       <rw-room position="-4 0 -4" material="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" height="4">
@@ -58,8 +58,8 @@
       
       <a-box position="2.124 2.95 -0.502" rotation="0 45 0" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" shadow=""></a-box>
       <a-tetrahedron position="3.4 2.2 5.2" color="#FF926B" radius="0.5"></a-tetrahedron>
-      <a-entity entity-generator="mixin: torusKnot; num: 20"></a-entity>
-      <a-sky color="#111"></a-sky>
+      <a-entity entity-generator="mixin: dodecahedron; num: 20"></a-entity>
+      <a-sky color="#87cefa"></a-sky>
       
     </a-scene>
   </body>
