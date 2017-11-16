@@ -58,11 +58,11 @@
                  random-material
                  random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
         
-        <a-asset-item id="mic" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Fmicrophone.gltf?1510846014951"></a-asset-item>
+        <a-asset-item id="mic" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Fdavid_low.mtl?15108464838381"></a-asset-item>
         <img id="mic-texture" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2F01%20-%20Default_albedo.jpg?1510846510004">
         
       </a-assets>
-            <a-entity obj-model="obj: #mic;" material="src: #mic-texture"></a-entity>
+            <a-entity obj-model="obj: #mic;" material="src: #mic-texture"></a-entity> <!-- Test Object -->
 
       
       <rw-room position="-4 0 -4" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" height="5">
@@ -75,11 +75,14 @@
 		  </rw-room>
 
       <a-box position="2.124 2.95 -0.502" rotation="0 45 0" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" shadow=""></a-box>
-      <a-tetrahedron position="-3.4 2.2 5.2" color="#FF926B" radius="0.5"></a-tetrahedron>
+      <a-tetrahedron position="-3.4 2.2 2.8" color="#FF926B" radius="0.5"></a-tetrahedron>
       <a-entity entity-generator="mixin: dodecahedron; num: 20"></a-entity>
       <a-entity entity-generator="mixin: octahedron; num: 10"></a-entity>
       
       <a-sky color="#87cefa"></a-sky>
+
+      <a-entity camera="userHeight: 1.6" look-controls wasd-controls> acceleration=90</a-entity>
+
       
     </a-scene>
   </body>
