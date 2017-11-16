@@ -36,6 +36,14 @@
           });
         }
       });
+      AFRAME.registerComponent('random-octahedron', {
+        init: function () {
+          this.el.setAttribute('geometry', {
+            primitive: 'octahedron',
+            radius: Math.random(),
+          });
+        }
+      });
     </script>
   </head>
   <body>
@@ -45,9 +53,19 @@
                  random-dodecahedron
                  random-material
                  random-position="min: -4 0 -4 ; max: 4 4 4"></a-mixin>
+        <a-mixin id = "octahedron"
+                 random-octahedron
+                 random-material
+                 random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
+        
+        <a-asset-item id="mic" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Fmicrophone.gltf?1510846014951"></a-asset-item>
+        <img id="mic-texture" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2F01%20-%20Default_albedo.jpg?1510846510004">
+        
       </a-assets>
+            <a-entity obj-model="obj: #mic;" material="src: #mic-texture"></a-entity>
+
       
-      <rw-room position="-4 0 -4" material="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" height="4">
+      <rw-room position="-4 0 -4" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" height="5">
 			  <rw-wall position="8 0 0"></rw-wall>
 			  <rw-wall position="8 0 8"></rw-wall>
 			  <rw-wall position="0 0 8"></rw-wall>
@@ -55,10 +73,12 @@
         <rw-ceiling position="0 0 0" material="color:##7c2803"></rw-ceiling>
         <rw-floor position ="0 0 0" material="color:##7c2803"></rw-floor>
 		  </rw-room>
-      
+
       <a-box position="2.124 2.95 -0.502" rotation="0 45 0" src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" shadow=""></a-box>
-      <a-tetrahedron position="3.4 2.2 5.2" color="#FF926B" radius="0.5"></a-tetrahedron>
+      <a-tetrahedron position="-3.4 2.2 5.2" color="#FF926B" radius="0.5"></a-tetrahedron>
       <a-entity entity-generator="mixin: dodecahedron; num: 20"></a-entity>
+      <a-entity entity-generator="mixin: octahedron; num: 10"></a-entity>
+      
       <a-sky color="#87cefa"></a-sky>
       
     </a-scene>
