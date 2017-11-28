@@ -71,13 +71,13 @@
 			  <rw-wall position="0 0 8"></rw-wall>
 			  <rw-wall position="0 0 0"></rw-wall>
         <rw-ceiling position="0 0 0" material="color:##7c2803"></rw-ceiling>
-        <rw-floor position ="0 0 0" material="color:##7c2803"></rw-floor>
+        <rw-floor position ="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Ftileable-light-wood-textures-3.jpg?1511880779647; repeat 2 2"></rw-floor>
 		  </rw-room>
 
       <a-box position="2.124 2.95 -0.502" rotation="0 45 0" 
              src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
              shadow="">
-        <a-animation attribute="rotation" begin="click" repeat="3" to="0 360 0"></a-animation>
+        <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
       </a-box>
       <a-tetrahedron position="-3.4 2.2 2.8" color="#FF926B" radius="0.5"></a-tetrahedron>
       <a-entity entity-generator="mixin: dodecahedron; num: 20"></a-entity>
@@ -85,9 +85,11 @@
       
       <a-sky color="#87cefa"></a-sky>
 
-      <a-entity camera="userHeight: 1.6" look-controls wasd-controls> 
-        
-        acceleration=90
+      <a-entity camera="userHeight: 1.6" 
+                look-controls wasd-controls
+                acceleration="90"
+                > 
+                
         <a-cursor color="#FFFFFF" />
       </a-entity>
 
