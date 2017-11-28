@@ -44,10 +44,10 @@
           });
         }
       });
-      AFRAME.registerComponent('random-box', {
+      AFRAME.registerComponent('random-sphere', {
         init: function () {
           this.el.setAttribute('geometry', {
-            primitive: 'box',
+            primitive: 'sphere',
             radius: Math.random(),
           });
         }
@@ -65,8 +65,8 @@
                  random-octahedron
                  random-material
                  random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
-        <a-mixin id = "box"
-                 random-box
+        <a-mixin id = "sphere"
+                 random-sphere
                  random-material
                  random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
         
@@ -82,6 +82,9 @@
 		  </rw-room>
 
       <a-box position="2.124 2.95 -0.502" rotation="0 45 0" 
+             height=".25"
+             width=".25"
+             depth=".25"
              src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
              shadow="">
         <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
@@ -89,7 +92,7 @@
       <a-tetrahedron position="-3.4 2.2 2.8" color="#FF926B" radius="0.5"></a-tetrahedron>
       <a-entity entity-generator="mixin: dodecahedron; num: 30"></a-entity>
       <a-entity entity-generator="mixin: octahedron; num: 15"></a-entity>
-      <a-entity entity-generator="mixin: octahedron; num: 10"></a-entity>
+      <a-entity entity-generator="mixin: sphere; num: 10"></a-entity>
       
       <a-sky color="#87cefa"></a-sky>
 
