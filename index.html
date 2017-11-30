@@ -88,12 +88,23 @@
              src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
              shadow="">
         <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
+        
       </a-box>
-      <a-tetrahedron position="-3.4 2.2 2.8" color="#FF926B" radius="0.5"></a-tetrahedron>
+      
+      <a-tetrahedron position="-3.4 2.2 2.8" 
+                     color="#FF926B" 
+                     radius="0.5"
+                     src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
+                     shadow="">
+      <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
+        
+      </a-tetrahedron>
       <a-entity entity-generator="mixin: dodecahedron; num: 30"></a-entity>
       <a-entity entity-generator="mixin: octahedron; num: 15"></a-entity>
       <a-entity entity-generator="mixin: sphere; num: 10">
-        </a-animation>
+        <a-animation begin="click" attribute="position" from="0 0 0"
+                   to="0 0 -10" dur="10000" fill="both"></a-animation>
+        
       </a-entity>
       
       <a-sky color="#87cefa"></a-sky>
@@ -101,8 +112,12 @@
       <a-entity camera="userHeight: 1.6" 
                 look-controls wasd-controls
                 acceleration="90"
+                cursor="maxDistance: 30; fuse: true"
                 > 
-                
+         <a-animation begin="click" easing="ease-in" attribute="scale"
+             fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
+        <a-animation begin="fusing" easing="ease-in" attribute="scale"
+             fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>       
         <a-cursor color="#FFFFFF" />
       </a-entity>
 
