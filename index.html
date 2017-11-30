@@ -36,7 +36,7 @@
         init: function () {
           this.el.setAttribute('geometry', {
             primitive: 'dodecahedron',
-            radius: Math.random(),
+            radius: Math.random()*.2,
           });
         }
       });
@@ -44,7 +44,7 @@
         init: function () {
           this.el.setAttribute('geometry', {
             primitive: 'octahedron',
-            radius: Math.random(),
+            radius: Math.random()*.2,
           });
         }
       });
@@ -52,10 +52,20 @@
         init: function () {
           this.el.setAttribute('geometry', {
             primitive: 'sphere',
-            radius: Math.random(),
+            radius: Math.random()*.2,
           });
         }
       });
+    </script>
+    <script>
+      
+      for (var i = 0; i < 7; i++){
+        for (var j = 0; i < 7; i++){
+          document.write(
+            "<a-box position='" + i+.5 + " " + j+.5 + " " + "0' travel-node='transition: fade' height='.25' width='.25' depth='.25' shadow=''></a-box>"
+          );
+        }
+      }
     </script>
   </head>
   <body>
@@ -73,7 +83,6 @@
                  random-sphere
                  random-material
                  random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
-        
       </a-assets>
                   
       <rw-room position="-4 0 -4" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FWood%20dry%20cracked%20bench%20tree%20bark%20texture%20ver%203.jpg?1511880866075; repeat: 2 2" height="5">
@@ -85,7 +94,7 @@
         <rw-ceiling position ="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Ftileable-light-wood-textures-3.jpg?1511880779647; repeat: 2 2"></rw-ceiling>
 		  </rw-room>
 
-      <a-box position="2.124 2.95 -0.502" rotation="0 45 0" travel-node="transition: fade"
+      <a-box random-position="min:-4 0 -4 ; max: 4 4 4" rotation="0 45 0" travel-node="transition: fade"
              height=".25"
              width=".25"
              depth=".25"
@@ -95,28 +104,28 @@
         
       </a-box>
       
-      <a-tetrahedron position="-3.4 2.2 2.8" 
+      <a-tetrahedron random-position="min:-4 0 -4 ; max: 4 4 4" 
                      
-                     radius="0.5"
+                     radius="0.1"
                      src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
                      shadow="">
       <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
         
       </a-tetrahedron>
       
-      <a-torusknot position="3.2 2 2" 
-                   geometry="primitive: torusKnot; p: 3; q:7"
+      <a-dodecahedron random-position="min:-4 0 -4 ; max: 4 4 4"
+                   geometry="primitive: dodecahedron; radius: .2"
         
-                     radius="0.5"
+            
                      src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
                      shadow="">
       <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
         
-      </a-torusknot>
+      </a-dodecahedron>
       
-      <a-entity entity-generator="mixin: dodecahedron; num: 30"></a-entity>
-      <a-entity entity-generator="mixin: octahedron; num: 15"></a-entity>
-      <a-entity entity-generator="mixin: sphere; num: 10">
+      <a-entity entity-generator="mixin: dodecahedron; num: 150"></a-entity>
+      <a-entity entity-generator="mixin: octahedron; num: 150"></a-entity>
+      <a-entity entity-generator="mixin: sphere; num: 150">
 <!--        <a-animation begin="click" attribute="position" from="0 0 0"
                    to="0 0 -10" dur="10000" fill="both"></a-animation>
 -->        
