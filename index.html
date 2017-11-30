@@ -60,10 +60,10 @@
     
     <script>
     function gen_grid() {
-      for (var i = -2; i < 3; i++){
-        for (var j = -2; i < 3; i++){
+      for (var i = -3.5; i < 3; i=i+0.5){
+        for (var j = -3.5; j < 3; j=j+0.5){
           document.write(
-            "<a-box position='" + i+.5 + " " + j+.5 + " " + "0' travel-node='transition: fade' height='.25' width='.25' depth='.25' shadow=''></a-box>"
+            "<a-box position='" + i + " 0 " + j + "' travel-node='transition: fade' height='.25' width='.25' depth='.25' shadow=''></a-box>"
           );
         }
       }
