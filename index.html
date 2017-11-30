@@ -57,16 +57,19 @@
         }
       });
     </script>
+    
     <script>
-      
-      for (var i = 0; i < 7; i++){
-        for (var j = 0; i < 7; i++){
+    function gen_grid() {
+      for (var i = -2; i < 3; i++){
+        for (var j = -2; i < 3; i++){
           document.write(
             "<a-box position='" + i+.5 + " " + j+.5 + " " + "0' travel-node='transition: fade' height='.25' width='.25' depth='.25' shadow=''></a-box>"
           );
         }
       }
+    }
     </script>
+    
   </head>
   <body>
     <a-scene>
@@ -84,6 +87,10 @@
                  random-material
                  random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
       </a-assets>
+      
+      <script>
+        gen_grid();
+      </script>
                   
       <rw-room position="-4 0 -4" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FWood%20dry%20cracked%20bench%20tree%20bark%20texture%20ver%203.jpg?1511880866075; repeat: 2 2" height="5">
 			  <rw-wall position="8 0 0"></rw-wall>
@@ -93,20 +100,20 @@
         <rw-floor position="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2F4391.jpg?1511883025524; repeat: 2 2"></rw-floor>
         <rw-ceiling position ="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Ftileable-light-wood-textures-3.jpg?1511880779647; repeat: 2 2"></rw-ceiling>
 		  </rw-room>
+      
+      
 
-      <a-box random-position="min:-4 0 -4 ; max: 4 4 4" rotation="0 45 0" travel-node="transition: fade"
-             height=".25"
-             width=".25"
-             depth=".25"
+      <a-sphere random-position="min:-4 0 -4 ; max: 4 4 4" rotation="0 45 0"
+             radius=".05"
              src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
              shadow="">
         <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
         
-      </a-box>
+      </a-sphere>
       
       <a-tetrahedron random-position="min:-4 0 -4 ; max: 4 4 4" 
                      
-                     radius="0.1"
+                     radius=".05"
                      src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
                      shadow="">
       <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
@@ -114,7 +121,7 @@
       </a-tetrahedron>
       
       <a-dodecahedron random-position="min:-4 0 -4 ; max: 4 4 4"
-                   geometry="primitive: dodecahedron; radius: .2"
+                   geometry="primitive: dodecahedron; radius: .05"
         
             
                      src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
