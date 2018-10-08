@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Interactions - A-Frame</title>
+    <meta name="description" content="Interactions - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+    <script src="../../../dist/aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@3.2.5/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-randomizer-components@3.0.2/dist/aframe-randomizer-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-entity-generator-component@3.0.1/dist/aframe-entity-generator-component.min.js"></script>
+    <script>src=""</script>
+    <script>
+      
+      AFRAME.registerComponent("travel-node",{schema:{axis:{type:"string","default":null},offsetX:{type:"number","default":null},offsetY:{type:"number","default":null},offsetZ:{type:"number","default":null},transition:{type:"string","default":null},animationDur:{type:"number","default":null},animationEasing:{type:"number","default":null},travelTarget:{type:"selector"}},axises:null,clickEventRegistered:!1,travelTarget:null,update:function(){var t=document.querySelector("a-scene");t.hasLoaded?this.setupVariables():t.addEventListener("loaded",function(){this.setupVariables()}.bind(this))},setupVariables:function(){var t=document.querySelector("a-scene"),e=t.components["travel-node-defaults"];if(void 0===e)return t.setAttribute("travel-node-defaults",""),void setTimeout(this.setupVariables.bind(this),10);for(var a in this.data)("number"===this.schema[a].type&&isNaN(this.data[a])||null===this.data[a])&&(this.data[a]=e.data[a]);this.axises={};var i=this.data.axis.toLowerCase().split(","),n=["x","y","z"];for(var a in n){var r=n[a];i.indexOf(r)>=0&&(this.axises[r]=!0)}this.travelTarget=this.data.travelTarget,null===this.travelTarget&&console.warn("Can't determine travel target."),this.clickEventRegistered||(this.el.addEventListener("click",this.onClick.bind(this)),this.clickEventRegistered=!0)},onClick:function(){var t=new THREE.Vector3,e=new THREE.Vector3;t.setFromMatrixPosition(this.el.object3D.matrixWorld),e.setFromMatrixPosition(this.travelTarget.object3D.matrixWorld);for(var a in this.axises)e[a]=t[a];switch(e.x+=this.data.offsetX,e.y = e.y,e.z+=this.data.offsetZ,this.targetPosition=e,this.data.transition){case"fade":this.fadeToTarget();break;case"move":AFRAME.components.animation?this.moveToTarget():(console.warn("To use the 'move' transition, you will need to add the aframe-animation-component component, available at https://github.com/ngokevin/aframe-animation-component"),this.jumpToTarget());break;default:console.warn("Unknown travel mode: "+this.data.mode);case"jump":this.jumpToTarget()}},fadeToTarget:function(){var t=document.querySelector("a-scene"),e=t.camera.el,a=document.createElement("a-plane");a.setAttribute("position","0 0 -0.1"),a.setAttribute("material","color: black; transparent: true; opacity: 0");var i=document.createElement("a-animation");i.setAttribute("attribute","material.opacity"),i.setAttribute("from","0"),i.setAttribute("to","1"),i.setAttribute("dur",this.data.animationDur),i.setAttribute("easing",this.data.animationEasing);var n=i.cloneNode(!0);n.setAttribute("from","1"),n.setAttribute("to","0"),n.setAttribute("delay",this.data.animationDur+100),i.addEventListener("animationend",function(){this.jumpToTarget()}.bind(this)),n.addEventListener("animationend",function(){a.removeChild(n),a.removeChild(i),e.removeChild(a)}),a.appendChild(n),a.appendChild(i),e.appendChild(a)},moveToTarget:function(){var t="property: position; to: "+this.targetPosition.x+" "+this.targetPosition.y+" "+this.targetPosition.z+"; dur: "+this.data.animationDur+"; easing: "+this.data.animationEasing;this.travelTarget.setAttribute("animation__travel-node_movetotarget",t),this.travelTarget.addEventListener("animation__travel-node_movetotarget-complete",function(){this.travelTarget.removeAttribute("animation__travel-node_movetotarget")}.bind(this))},jumpToTarget:function(){this.travelTarget.setAttribute("position",this.targetPosition)}}),AFRAME.registerComponent("travel-node-defaults",{schema:{axis:{type:"string","default":"x,z"},offsetX:{type:"number","default":0},offsetY:{type:"number","default":0},offsetZ:{type:"number","default":0},transition:{type:"string","default":"fade"},animationDur:{type:"number","default":100},animationEasing:{type:"string","default":"linear"},travelTarget:{type:"selector","default":"[camera]"}},init:function(){var t=document.querySelector("a-scene");t.hasLoaded?this.checkElement():t.addEventListener("loaded",function(){this.checkElement()}.bind(this))},checkElement:function(){"A-SCENE"!==this.el.tagName&&console.warn("travel-node-defaults should be placed on the a-scene element.")}});
+      
+      AFRAME.registerComponent('random-material', {
+        init: function () {
+          this.el.setAttribute('material', {
+            color: this.getRandomColor(),
+            metalness: Math.random(),
+            roughness: Math.random()
+          });
+        },
+        getRandomColor: function () {
+          var letters = '0123456789ABCDEF'.split('');
+          var color = '#';
+          for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        }
+      });
+      AFRAME.registerComponent('random-dodecahedron', {
+        init: function () {
+          this.el.setAttribute('geometry', {
+            primitive: 'dodecahedron',
+            radius: Math.random()*.2,
+          });
+        }
+      });
+      AFRAME.registerComponent('random-octahedron', {
+        init: function () {
+          this.el.setAttribute('geometry', {
+            primitive: 'octahedron',
+            radius: Math.random()*.2,
+          });
+        }
+      });
+      AFRAME.registerComponent('random-sphere', {
+        init: function () {
+          this.el.setAttribute('geometry', {
+            primitive: 'sphere',
+            radius: Math.random()*.2,
+          });
+        }
+      });
+    </script>
+    
+    <script>
+    function gen_grid() {
+      for (var i = -3.5; i <= 3.5; i=i+1){
+        for (var j = -3.5; j <= 3.5; j=j+1){
+          document.write(
+            "<a-box position='" + i + " 0 " + j + "' travel-node='transition: fade' height='.1' width='.2' depth='.2' shadow=''></a-box>"
+          );
+        }
+      }
+    }
+    </script>
+    
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-mixin id="dodecahedron"
+                 random-dodecahedron
+                 random-material
+                 random-position="min: -4 0 -4 ; max: 4 4 4"></a-mixin>
+        <a-mixin id = "octahedron"
+                 random-octahedron
+                 random-material
+                 random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
+        <a-mixin id = "sphere"
+                 random-sphere
+                 random-material
+                 random-position="min:-4 0 -4 ; max: 4 4 4"></a-mixin>
+      </a-assets>
+      
+      <script>
+        gen_grid();
+      </script>
+                  
+      <rw-room position="-4 0 -4" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FWood%20dry%20cracked%20bench%20tree%20bark%20texture%20ver%203.jpg?1511880866075; repeat: 2 2" height="5">
+			  <rw-wall position="8 0 0"></rw-wall>
+			  <rw-wall position="8 0 8"></rw-wall>
+			  <rw-wall position="0 0 8"></rw-wall>
+			  <rw-wall position="0 0 0"></rw-wall>
+        <rw-floor position="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2F4391.jpg?1511883025524; repeat: 2 2"></rw-floor>
+        <rw-ceiling position ="0 0 0" material="src: https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2Ftileable-light-wood-textures-3.jpg?1511880779647; repeat: 2 2"></rw-ceiling>
+		  </rw-room>
+      
+      
+
+      <a-sphere random-position="min:-4 0 -4 ; max: 4 4 4" rotation="0 45 0"
+             radius=".1"
+             src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
+             shadow="">
+        <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
+        
+      </a-sphere>
+      
+      <a-tetrahedron random-position="min:-4 0 -4 ; max: 4 4 4" 
+                     
+                     radius=".1"
+                     src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
+                     shadow="">
+      <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
+        
+      </a-tetrahedron>
+      
+      <a-dodecahedron random-position="min:-4 0 -4 ; max: 4 4 4"
+                   geometry="primitive: dodecahedron; radius: .1"
+        
+            
+                     src="https://cdn.glitch.com/9dda8d72-5186-451f-88b2-dbadf99c7af3%2FLOG%20CABIN%20RED%20CEDAR-D.jpg?1510844365199" 
+                     shadow="">
+      <a-animation attribute="rotation" begin="click" repeat="2" to="180 360 0"></a-animation>
+        
+      </a-dodecahedron>
+      
+      <a-entity entity-generator="mixin: dodecahedron; num: 150"></a-entity>
+      <a-entity entity-generator="mixin: octahedron; num: 150"></a-entity>
+      <a-entity entity-generator="mixin: sphere; num: 150">
+<!--        <a-animation begin="click" attribute="position" from="0 0 0"
+                   to="0 0 -10" dur="10000" fill="both"></a-animation>
+-->        
+      </a-entity>
+      <a-sky color="#87cefa"></a-sky>
+      <a-entity camera="userHeight: 1.6"  look-controls wasd-controls>
+      <a-entity position="0 0 -2"
+                geometry="primitive: ring; radiusInner: 0.03; radiusOuter: 0.04;"
+                material="color: white; shader: flat"
+                cursor="maxDistance: 30; fuse: true">
+        <a-animation begin="click" easing="ease-in" attribute="scale"
+             fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
+        <a-animation begin="fusing" easing="ease-in" attribute="scale"
+             fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+      </a-entity>
+        
+      <a-entity position="0 0 -.5"
+                geometry="primitive: ring; radiusInner: 0.03; radiusOuter: 0.04;"
+                material="color: white; shader: flat"
+                cursor="maxDistance: 30; fuse: true">
+        <a-animation begin="click" easing="ease-in" attribute="scale"
+             fill="forwards" from="0.2 0.2 0.2" to="1 1 1" dur="150"></a-animation>
+        <a-animation begin="fusing" easing="ease-in" attribute="scale"
+             fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+      </a-entity>
+        
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
