@@ -4,7 +4,7 @@
 
 In this simple game optimized for mobile phones using Google Cardboard, players search for three wooden objects in a VR room filled with randomly generated shapes.  Can you find them??
 
-![](figures/headerimg)
+![](figures/headerimg.png)
 
 _Contributors: Keller Chambers, Uttam Kumaran, Lucas Nicolois, Nick Simons_
 _-For Human-Computer Interaction with Professor Evan Peck, Bucknell University Department of Computer Science_
