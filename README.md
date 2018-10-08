@@ -1,6 +1,7 @@
 # VR Scavenger Hunt: Designing Another World
 
 ---
+
 In this simple game optimized for mobile phones using Google Cardboard, players search for three wooden objects in a VR room filled with randomly generated shapes.  Can you find them??
 
 ![](figures/headerimg)
